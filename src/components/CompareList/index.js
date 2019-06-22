@@ -1,12 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Container, Repository } from './styles';
+import { Container, Repository, CloseButton } from './styles';
 
-const CompareList = ({ repositories }) => (
+const CompareList = ({ repositories, handleRemove, handleUpdate }) => (
   <Container>
     {repositories.map(repository => (
       <Repository key={repository.id}>
+        <CloseButton>
+          <i className="fa fa-refresh" onClick={() => handleUpdate(repository.id)} />
+          <i className="fa fa-times-circle" onClick={() => handleRemove(repository.id)} />
+        </CloseButton>
         <header>
           <img src={repository.owner.avatar_url} alt={repository.owner.login} />
           <strong>{repository.name}</strong>
@@ -46,6 +50,8 @@ CompareList.propTypes = {
       pushed_at: PropTypes.string,
     }),
   ).isRequired,
+  handleRemove: PropTypes.func.isRequired,
+  handleUpdate: PropTypes.func.isRequired,
 };
 
 export default CompareList;

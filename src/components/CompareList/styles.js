@@ -8,6 +8,18 @@ export const Container = styled.div`
   margin-top: 50px;
 `;
 
+export const CloseButton = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 10px;
+  cursor:pointer;
+
+  i:hover {
+    opacity:0.8;
+  }
+`;
+
 export const Repository = styled.div`
   width: 250px;
   margin: 0 10px;
